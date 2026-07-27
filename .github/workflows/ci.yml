@@ -19,4 +19,4 @@ jobs:
       uses: docker/setup-buildx-action@v3
 
     - name: Test Docker Compose Build
-      run: docker-compose build
+      run: docker compose build
