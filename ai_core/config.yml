@@ -1,0 +1,42 @@
+# ==========================================================#
+#                    Main Configuration                     #
+# ==========================================================#
+
+paths:
+  data_dir: "data/cifake"
+  train_dir: "data/cifake/train"
+  test_dir: "data/cifake/test"
+  
+  checkpoint_dir: "checkpoints"
+  log_dir: "experiments/logs"
+
+training:
+  image_size: 224          
+  batch_size: 64 
+  epochs: 20               
+  num_workers: 4           
+  patience: 5              
+
+  # ============ LEARNING RATE (LR) ============
+  # ResNet:       lr = 0.001  (1e-3) → Mạng cứng cáp, chịu được LR cao
+  # EfficientNet: lr = 0.001  (1e-3) → Tương tự ResNet
+  # DenseNet:     lr = 0.001  (1e-3) → Tương tự ResNet, mạng ổn định nhờ dense connections
+  learning_rate: 0.001
+
+  # ============ WEIGHT DECAY ============
+  # ResNet:       weight_decay = 0.01 → Mức chuẩn
+  # EfficientNet: weight_decay = 0.01 → Mức chuẩn
+  # DenseNet:     weight_decay = 0.01 → Mức chuẩn (dense connections đã tự regularize)
+  weight_decay: 0.01
+
+  # ============ DROPOUT ============
+  # ResNet:       dropout = 0.5/0.3 → FC lớn (2048), cần dropout mạnh
+  # EfficientNet: dropout = 0.3/0.3 → Đã có Squeeze-Excitation chống overfit, dropout nhẹ
+  # DenseNet:     dropout = 0.4/0.2 → Dense connections tự regularize, feature dim 1024 vừa phải
+  # Dropout được set trong file models/*.py, KHÔNG set ở đây
+
+model:
+  name: "densenet"         # resnet | efficientnet | densenet
+  num_classes: 2           # 0 = FAKE, 1 = REAL (ImageFolder tự sắp theo alphabet)
+  pretrained: true         # Dùng trọng số ImageNet, luôn để true
+  fine_tune: false         # false = chỉ train FC cuối (nhanh) | true = train toàn bộ (chậm, cần LR rất nhỏ ~1e-5)

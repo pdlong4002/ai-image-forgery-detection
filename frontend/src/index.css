@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans antialiased m-0 p-0;
+  }
+}
+
+@layer utilities {
+  .glass-effect {
+    @apply bg-white/95 backdrop-blur-md border border-slate-200/60;
+  }
+  .soft-shadow {
+    box-shadow: 0 4px 20px -2px rgba(148, 163, 184, 0.06), 0 2px 8px -1px rgba(148, 163, 184, 0.04);
+  }
+}
+
+/* Ant Design Overrides to match standard theme */
+.ant-btn {
+  border-radius: 12px;
+  min-height: 44px; /* Touch target size CRITICAL */
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ant-btn:active {
+  transform: scale(0.96); /* Press feedback */
+}
+
+.ant-input, .ant-input-number, .ant-select-selector {
+  border-radius: 12px !important;
+}
+
+.ant-modal-content {
+  border-radius: 24px !important;
+  padding: 32px !important;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Base custom native button reset to match ant-btn */
+button.native-btn {
+  border-radius: 12px;
+  min-height: 44px;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+button.native-btn:active:not(:disabled) {
+  transform: scale(0.96);
+}

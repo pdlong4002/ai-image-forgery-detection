@@ -1,0 +1,62 @@
+data/
+
+# Model Checkpoints (Heavy files)
+checkpoints/
+*.pth
+*.zip
+
+# Python & Môi trường ảo
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Frontend (ReactJS) & Backend (Node.js nếu có)
+node_modules/
+build/
+dist/
+.next/
+out/
+.nuxt/
+
+# Các file IDE & OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Local build scripts
+build.bat

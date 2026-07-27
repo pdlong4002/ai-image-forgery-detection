@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: dl-forgery-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      # Map thư mục thật vào container để sửa code ngoài máy thì trong container cũng cập nhật
+      - ./backend:/app/backend
+      - ./ai_core:/app/ai_core
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: dl-forgery-frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules # Bảo vệ node_modules bên trong container không bị đè bởi host
+    environment:
+      # Giúp tính năng tự động tải lại (Hot-Reload) của Vite hoạt động trơn tru trong Windows Docker
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - backend
