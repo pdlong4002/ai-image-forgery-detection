@@ -6,7 +6,7 @@
 
 Đề tài: *Nghiên cứu và phát triển hệ thống phát hiện ảnh ngụy tạo do trí tuệ nhân tạo sinh ra sử dụng Deep Learning kết hợp Explainable Artificial Intelligence (XAI)*
 
-👨‍🎓 **Sinh viên thực hiện:** Phạm Đức Long
+👨‍🎓 **Sinh viên thực hiện:** Phạm Đức Long  
 👨‍🏫 **Giảng viên hướng dẫn:** Th.S Đặng Văn Lực
 
 ---
