@@ -93,7 +93,7 @@ def run_inference(models_dict, test_loader):
             
             for name, m_info in models_dict.items():
                 outputs = m_info["model"](images)
-                probs = F.softmax(outputs, dim=1)[:, 1] # Lấy xác suất của class 1 (REAL)
+                probs = F.softmax(outputs, dim=1)[:, 0] # Lấy xác suất của class 0 (FAKE)
                 preds = torch.argmax(outputs, dim=1)
                 
                 results[name]["y_true"].extend(labels_np)
@@ -148,9 +148,9 @@ def plot_metrics_barchart(results):
     for name in models:
         y_true, y_pred = results[name]["y_true"], results[name]["y_pred"]
         accs.append(accuracy_score(y_true, y_pred))
-        precs.append(precision_score(y_true, y_pred))
-        recs.append(recall_score(y_true, y_pred))
-        f1s.append(f1_score(y_true, y_pred))
+        precs.append(precision_score(y_true, y_pred, pos_label=0))
+        recs.append(recall_score(y_true, y_pred, pos_label=0))
+        f1s.append(f1_score(y_true, y_pred, pos_label=0))
         
     x = np.arange(len(models))
     width = 0.2
